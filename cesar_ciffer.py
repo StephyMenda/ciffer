@@ -1,4 +1,5 @@
 import string
+string.printable=string.printable.replace("\r", "à")
 def chiffrementcesar(texte_de_base, clef):
     caract_crypter=[]
     for caract in texte_de_base:
@@ -8,12 +9,9 @@ def chiffrementcesar(texte_de_base, clef):
         sinon on copie le caractere tel qu'il est dans la liste des caracteres cripter, 
         l'espace n'est pas considerer comme un caracter alpha numerique
         '''
-        if caract.isalnum():
-            index = (string.printable.index(caract) + clef) % len(string.printable)
-            carac = string.printable[index]
-            caract_crypter.append(carac)
-        else:
-            caract_crypter.append(caract)
+        index = (string.printable.index(caract) + clef) % len(string.printable)
+        carac = string.printable[index]
+        caract_crypter.append(carac)
     texte_chiffrer="".join(caract_crypter)
     return texte_chiffrer
 
